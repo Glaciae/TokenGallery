@@ -1,19 +1,12 @@
-/* Importer les polices personnalisées depuis Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Nunito:ital,wght@0,200;0,1000;1,200;1,1000&display=swap');
-
-/* Définir la police Bagel Fat One */
-.bagel-fat-one-regular {
-    font-family: 'Bagel Fat One', system-ui; /* Utilise la police Bagel Fat One avec une police de secours system-ui */
-    font-weight: 400; /* Poids de police normal */
-    font-style: normal; /* Style de police normal */
-}
 
 /* Style global du corps de la page */
 body {
     font-family: 'Nunito', sans-serif; /* Utilise la police Nunito avec une police de secours sans-serif */
     margin: 0; /* Supprime les marges par défaut du navigateur */
+    margin-bottom: 4%;
+    font-size: 1.2em; /* Définit la taille de police à 5em */
     padding: 0; /* Supprime les espacements internes par défaut du navigateur */
-    line-height: 1.6; /* Définit la hauteur de ligne pour améliorer la lisibilité */
+    line-height: 1; /* Définit la hauteur de ligne pour améliorer la lisibilité */
     color: #333; /* Définit la couleur du texte à gris foncé */
     background-color: #c2b9e9; /* Définit la couleur de fond de la page */
 }
@@ -29,8 +22,8 @@ header {
 header h1 {
     font-size: 5em; /* Définit la taille de police à 5em */
     margin: 0; /* Supprime les marges par défaut */
-    margin-top: 5%;
-    margin-bottom: 10%;
+    margin-top: 2%;
+    margin-bottom: 4%;
 }
 
 /* Style pour le texte avec animation de lignes */
@@ -76,14 +69,14 @@ header h1 {
     opacity: 0; /* Rend l'élément invisible */
 }
 
-/* Style de la vidéo d'introduction */
+/* Style de la vidéo d'introduction
 .intro-media {
     margin: 5%;
-}
+} */
 
 .intro-media video {
     width: 90%; /* Définit la largeur à 100% de l'élément parent */
-    max-height: 50%; /* Définit une hauteur maximale */
+    max-height: 100%; /* Définit une hauteur maximale */
     object-fit: cover; /* Recadre la vidéo pour couvrir l'élément */
 }
 
@@ -135,6 +128,7 @@ section {
 h2 {
     font-size: 2em; /* Définit la taille de police à 2em */
     color: #444; /* Définit la couleur du texte */
+    font-weight: bold;
 }
 
 ul {
