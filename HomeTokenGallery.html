@@ -31,27 +31,164 @@
         <div class="scrolling-container">
             <h2 class="scrolling-text"> About </h2>
         </div>
-        <p>Hi there! Welcome to our NFT Gallery ! bla bla bla</p>
+        <p class="larger-text">Hi there! I’m Claudia Mussett, an art director, multidisciplinary designer, and illustrator. I work independently worldwide from Spain.</p>
     </section>
 
     <section id="playground">
         <div class="scrolling-container">
             <h2 class="scrolling-text"> Playground </h2>
         </div>
-        <p>This is a selection of some experiments and stuff I do for my friends or just for fun...</p>
-    </section>
-
-    <section id="Contact">
-        <div class="scrolling-container">
-            <h2 class="scrolling-text"> Contact </h2>
+        <p class="larger-text">This is a selection of some experiments and stuff I do for my friends or just for fun...</p>
+        <div class="gallery">
+            <div class="container" onclick="openLightbox(event)">
+                <div class="image-wrapper">
+                    <img src="./Assets/NFTCUBIQUE1.png" alt="Image 1" class="image">
+                </div>
+                <div class="overlay">
+                    <div class="text">Image 1</div>
+                </div>
+            </div>
+            <div class="container" onclick="openLightbox(event)">
+                <div class="image-wrapper">
+                    <img src="./Assets/NFTCUBIQUE3.png" alt="Image 2" class="image">
+                </div>
+                <div class="overlay">
+                    <div class="text">Image 2</div>
+                </div>
+            </div>
+            <div class="container" onclick="openLightbox(event)">
+                <div class="image-wrapper">
+                    <img src="./Assets/NFTCUBIQUE2.png" alt="Image 3" class="image">
+                </div>
+                <div class="overlay">
+                    <div class="text">Image 3</div>
+                </div>
+            </div>
+            <div class="container" onclick="openLightbox(event)">
+                <div class="image-wrapper">
+                    <img src="./Assets/NFTCUBIQUE4.png" alt="Image 4" class="image">
+                </div>
+                <div class="overlay">
+                    <div class="text">Image 4</div>
+                </div>
+            </div>
+            <div class="container" onclick="openLightbox(event)">
+                <div class="image-wrapper">
+                    <img src="./Assets/NFTCUBIQUE5.png" alt="Image 2" class="image">
+                </div>
+                <div class="overlay">
+                    <div class="text">Image 5</div>
+                </div>
+            </div>
+            <div class="container" onclick="openLightbox(event)">
+                <div class="image-wrapper">
+                    <img src="./Assets/NFTCUBIQUE6.png" alt="Image 6" class="image">
+                </div>
+                <div class="overlay">
+                    <div class="text">Image 6</div>
+                </div>
+            </div>
+            <div class="container" onclick="openLightbox(event)">
+                <div class="image-wrapper">
+                    <img src="./Assets/NFTCUBIQUE7.png" alt="Image 7" class="image">
+                </div>
+                <div class="overlay">
+                    <div class="text">Image 7</div>
+                </div>
+            </div>
+            <div class="container" onclick="openLightbox(event)">
+                <div class="image-wrapper">
+                    <img src="./Assets/NFTCUBIQUE8.png" alt="Image 8" class="image">
+                </div>
+                <div class="overlay">
+                    <div class="text">Image 8</div>
+                </div>
+            </div>
+            <div class="container" onclick="openLightbox(event)">
+                <div class="image-wrapper">
+                    <img src="./Assets/NFTCUBIQUE9.png" alt="Image 9" class="image">
+                </div>
+                <div class="overlay">
+                    <div class="text">Image 9</div>
+                </div>
+            </div>
+            <div class="container" onclick="openLightbox(event)">
+                <div class="image-wrapper">
+                    <img src="./Assets/NFTCUBIQUE10.png" alt="Image 10" class="image">
+                </div>
+                <div class="overlay">
+                    <div class="text">Image 10</div>
+                </div>
+            </div>
+            <div class="container" onclick="openLightbox(event)">
+                <div class="image-wrapper">
+                    <img src="./Assets/NFTCUBIQUE11.png" alt="Image 11" class="image">
+                </div>
+                <div class="overlay">
+                    <div class="text">Image 11</div>
+                </div>
+            </div>
+            <div class="container" onclick="openLightbox(event)">
+                <div class="image-wrapper">
+                    <img src="./Assets/NFTCUBIQUE12.png" alt="Image 12" class="image">
+                </div>
+                <div class="overlay">
+                    <div class="text">Image 12</div>
+                </div>
+            </div>
+            <div class="container" onclick="openLightbox(event)">
+                <div class="image-wrapper">
+                    <img src="./Assets/NFTCUBIQUE13.png" alt="Image 13" class="image">
+                </div>
+                <div class="overlay">
+                    <div class="text">Image 13</div>
+                </div>
+            </div>
+            <div class="container" onclick="openLightbox(event)">
+                <div class="image-wrapper">
+                    <img src="./Assets/NFTCUBIQUE14.png" alt="Image 14" class="image">
+                </div>
+                <div class="overlay">
+                    <div class="text">Image 14</div>
+                </div>
+            </div>
+            <div class="container" onclick="openLightbox(event)">
+                <div class="image-wrapper">
+                    <img src="./Assets/NFTCUBIQUE15.png" alt="Image 15" class="image">
+                </div>
+                <div class="overlay">
+                    <div class="text">Image 15</div>
+                </div>
+            </div>
+            <div class="container" onclick="openLightbox(event)">
+                <div class="image-wrapper">
+                    <img src="./Assets/NFTCUBIQUE16.png" alt="Image 16" class="image">
+                </div>
+                <div class="overlay">
+                    <div class="text">Image 16</div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <footer>
+    <!-- Lightbox container -->
+    <div id="lightbox">
+        <span id="close-btn" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="" alt="lightbox image">
+        <div id="thumbnail-container"></div>
+        <button id="prev-btn" onclick="changeImage(-1)">&lt; Prev</button>
+        <button id="next-btn" onclick="changeImage(1)">Next &gt;</button>
+    </div>
+
+    <footer class="scrolling-section">
+        <div class="scrolling-container">
+            <!-- <h2 class="scrolling-text"> Contact </h2> -->
+        </div>
         <p>Email me at <a href="mailto:alines@tokengallery.com">alines@tokengallery.com</a></p>
-        <p>Find me on <a href="https://github.com/Glaciae/TokenGallery.git" target="_blank">GitHub</a></p>
+        <p>Find me on <a href="https://github.com/Glaciae/TokenGallery" target="_blank">GitHub</a></p>
     </footer>
 
     <script src="HomeTokenGallery.js"></script>
+    <script src="gallery.js"></script>
 </body>
 </html>
