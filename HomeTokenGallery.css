@@ -1,0 +1,163 @@
+/* Importer les polices personnalisées depuis Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Nunito:ital,wght@0,200;0,1000;1,200;1,1000&display=swap');
+
+/* Définir la police Bagel Fat One */
+.bagel-fat-one-regular {
+    font-family: 'Bagel Fat One', system-ui; /* Utilise la police Bagel Fat One avec une police de secours system-ui */
+    font-weight: 400; /* Poids de police normal */
+    font-style: normal; /* Style de police normal */
+}
+
+/* Style global du corps de la page */
+body {
+    font-family: 'Nunito', sans-serif; /* Utilise la police Nunito avec une police de secours sans-serif */
+    margin: 0; /* Supprime les marges par défaut du navigateur */
+    padding: 0; /* Supprime les espacements internes par défaut du navigateur */
+    line-height: 1.6; /* Définit la hauteur de ligne pour améliorer la lisibilité */
+    color: #333; /* Définit la couleur du texte à gris foncé */
+    background-color: #c2b9e9; /* Définit la couleur de fond de la page */
+}
+
+/* Style du header */
+header {
+    background: #c2b9e9; /* Définit la couleur de fond du header */
+    padding: 20px; /* Ajoute un espacement interne de 20px tout autour */
+    text-align: center; /* Centre le contenu à l'intérieur du header */
+    position: relative; /* Positionne l'élément relativement par rapport à sa position normale */
+}
+
+header h1 {
+    font-size: 5em; /* Définit la taille de police à 5em */
+    margin: 0; /* Supprime les marges par défaut */
+    margin-top: 5%;
+    margin-bottom: 10%;
+}
+
+/* Style pour le texte avec animation de lignes */
+.ml5 {
+    position: relative; /* Positionne l'élément relativement */
+    font-weight: 300; /* Définit un poids de police léger */
+    font-size: 800%; /* Définit la taille de police à 4.5em */
+    color: #333; /* Définit la couleur du texte */
+}
+
+.ml5 .text-wrapper {
+    position: relative; /* Positionne l'élément relativement */
+    display: inline-block; /* Affiche l'élément en bloc en ligne */
+    padding-top: 0.1em; /* Ajoute un espacement interne en haut */
+    padding-right: 0.05em; /* Ajoute un espacement interne à droite */
+    padding-bottom: 0.15em; /* Ajoute un espacement interne en bas */
+    line-height: 1em; /* Définit la hauteur de ligne à 1em */
+}
+
+.ml5 .line {
+    position: absolute; /* Positionne l'élément absolument */
+    left: 0; /* Positionne l'élément à gauche */
+    top: 0; /* Positionne l'élément en haut */
+    bottom: 0; /* Positionne l'élément en bas */
+    margin: auto; /* Centre verticalement l'élément */
+    height: 3px; /* Définit la hauteur de la ligne */
+    width: 100%; /* Définit la largeur de la ligne */
+    background-color: #333; /* Définit la couleur de fond de la ligne */
+    transform-origin: 0.5 0; /* Définit l'origine de la transformation */
+}
+
+.ml5 .ampersand {
+    font-family: Baskerville, serif; /* Utilise la police Baskerville avec une police de secours serif */
+    font-style: italic; /* Définit le style de police en italique */
+    font-weight: 400; /* Définit un poids de police normal */
+    width: 1em; /* Définit la largeur */
+    margin-right: -0.1em; /* Définit une marge négative à droite */
+    margin-left: -0.1em; /* Définit une marge négative à gauche */
+}
+
+.ml5 .letters {
+    display: inline-block; /* Affiche l'élément en bloc en ligne */
+    opacity: 0; /* Rend l'élément invisible */
+}
+
+/* Style de la vidéo d'introduction */
+.intro-media {
+    margin: 5%;
+}
+
+.intro-media video {
+    width: 90%; /* Définit la largeur à 100% de l'élément parent */
+    max-height: 50%; /* Définit une hauteur maximale */
+    object-fit: cover; /* Recadre la vidéo pour couvrir l'élément */
+}
+
+/* Conteneur de défilement pour le texte */
+.scrolling-container {
+    overflow: hidden; /* Cache le contenu débordant */
+    white-space: nowrap; /* Empêche le retour à la ligne */
+    position: relative; /* Positionne l'élément relativement */
+}
+
+/* Style du texte défilant */
+.scrolling-text {
+    position: relative; /* Positionne l'élément relativement */
+    font-weight: 200; /* Définit un poids de police léger */
+    font-size: 300%; /* Définit la taille de police à 300% */
+}
+
+.scrolling-text .text-wrapper {
+    position: relative; /* Positionne l'élément relativement */
+    display: inline-block; /* Affiche l'élément en bloc en ligne */
+    padding-top: 0.2em; /* Ajoute un espacement interne en haut */
+    padding-right: 0.05em; /* Ajoute un espacement interne à droite */
+    padding-bottom: 0.1em; /* Ajoute un espacement interne en bas */
+    overflow: hidden; /* Cache le contenu débordant */
+}
+
+.scrolling-text .letter {
+    transform-origin: 50% 100%; /* Définit l'origine de la transformation */
+    display: inline-block; /* Affiche l'élément en bloc en ligne */
+    line-height: 1em; /* Définit la hauteur de ligne à 1em */
+}
+
+/* Animation de défilement */
+@keyframes scroll {
+    0% {
+        transform: translateX(100%); /* Positionne le texte en dehors de la vue à droite */
+    }
+    100% {
+        transform: translateX(-100%); /* Déplace le texte en dehors de la vue à gauche */
+    }
+}
+
+/* Style des sections */
+section {
+    padding: 20px; /* Ajoute un espacement interne de 20px tout autour */
+    text-align: center; /* Centre le contenu à l'intérieur de la section */
+}
+
+h2 {
+    font-size: 2em; /* Définit la taille de police à 2em */
+    color: #444; /* Définit la couleur du texte */
+}
+
+ul {
+    list-style: none; /* Supprime les puces des listes */
+    padding: 0; /* Supprime les espacements internes */
+}
+
+li {
+    margin: 5px 0; /* Ajoute un espacement externe de 5px en haut et en bas */
+}
+
+/* Style du footer */
+footer {
+    background: #c2b9e9; /* Définit la couleur de fond du footer */
+    padding: 20px; /* Ajoute un espacement interne de 20px tout autour */
+    text-align: center; /* Centre le contenu à l'intérieur du footer */
+}
+
+footer a {
+    color: #333; /* Définit la couleur du texte des liens */
+    text-decoration: none; /* Supprime la décoration par défaut des liens */
+}
+
+footer a:hover {
+    text-decoration: underline; /* Ajoute une décoration de soulignement sur hover */
+}
