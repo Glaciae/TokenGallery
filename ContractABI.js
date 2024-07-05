@@ -563,31 +563,3 @@ const contractABI = [
         "type": "function"
     }
 ];
-
-async function loadNFTs() {
-    if (window.ethereum) {
-        const web3 = new web3(window.ethereum);
-        await window.ethereum.enable();
-        const contract = new web3.eth.Contract(contractABI, contractAddress);
-
-        const totalSupply = await contract.methods._tokenIds().call();
-        const gallery = document.getElementById('nft-gallery');
-
-        for (let i = 1; i <= totalSupply && i <= 18; i++) {
-            const tokenURI = await contract.methods.tokenURI(i).call();
-            c
-const img = document.createElement('img');
-            img.src = tokenURI;
-            img.alt = `NFT ${i}`;
-            img.className = 'nft-item';
-            img.onclick = () => {
-                window.open(`https://sepolia.etherscan.io/token/${contractAddress}?a=${i}`, '_blank');
-            };
-            gallery.appendChild(img);
-        }
-    } else {
-        alert('Please install MetaMask!');
-    }
-}
-
-window.onload = loadNFTs;

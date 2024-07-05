@@ -1,602 +1,51 @@
-const contractAddress = '0xACEf03B77e2eFF6d5DD942687749C8056F5b9816';
-const contractABI = [
-    {
-        "inputs": [],
-        "stateMutability": "nonpayable",
-        "type": "constructor"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "sender",
-                "type": "address"
-            },
-            {
-                "internalType": "uint256",
-                "name": "tokenId",
-                "type": "uint256"
-            },
-            {
-                "internalType": "address",
-                "name": "owner",
-                "type": "address"
-            }
-        ],
-        "name": "ERC721IncorrectOwner",
-        "type": "error"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "operator",
-                "type": "address"
-            },
-            {
-                "internalType": "uint256",
-                "name": "tokenId",
-                "type": "uint256"
-            }
-        ],
-        "name": "ERC721InsufficientApproval",
-        "type": "error"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "approver",
-                "type": "address"
-            }
-        ],
-        "name": "ERC721InvalidApprover",
-        "type": "error"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "operator",
-                "type": "address"
-            }
-        ],
-        "name": "ERC721InvalidOperator",
-        "type": "error"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "owner",
-                "type": "address"
-            }
-        ],
-        "name": "ERC721InvalidOwner",
-        "type": "error"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "receiver",
-                "type": "address"
-            }
-        ],
-        "name": "ERC721InvalidReceiver",
-        "type": "error"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "sender",
-                "type": "address"
-            }
-        ],
-        "name": "ERC721InvalidSender",
-        "type": "error"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "tokenId",
-                "type": "uint256"
-            }
-        ],
-        "name": "ERC721NonexistentToken",
-        "type": "error"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "owner",
-                "type": "address"
-            }
-        ],
-        "name": "OwnableInvalidOwner",
-        "type": "error"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "account",
-                "type": "address"
-            }
-        ],
-        "name": "OwnableUnauthorizedAccount",
-        "type": "error"
-    },
-    {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": true,
-                "internalType": "address",
-                "name": "owner",
-                "type": "address"
-            },
-            {
-                "indexed": true,
-                "internalType": "address",
-                "name": "approved",
-                "type": "address"
-            },
-            {
-                "indexed": true,
-                "internalType": "uint256",
-                "name": "tokenId",
-                "type": "uint256"
-            }
-        ],
-        "name": "Approval",
-        "type": "event"
-    },
-    {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": true,
-                "internalType": "address",
-                "name": "owner",
-                "type": "address"
-            },
-            {
-                "indexed": true,
-                "internalType": "address",
-                "name": "operator",
-                "type": "address"
-            },
-            {
-                "indexed": false,
-                "internalType": "bool",
-                "name": "approved",
-                "type": "bool"
-            }
-        ],
-        "name": "ApprovalForAll",
-        "type": "event"
-    },
-    {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "_fromTokenId",
-                "type": "uint256"
-            },
-            {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "_toTokenId",
-                "type": "uint256"
-            }
-        ],
-        "name": "BatchMetadataUpdate",
-        "type": "event"
-    },
-    {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": false,
-                "internalType": "uint256",
-                "name": "_tokenId",
-                "type": "uint256"
-            }
-        ],
-        "name": "MetadataUpdate",
-        "type": "event"
-    },
-    {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": true,
-                "internalType": "address",
-                "name": "previousOwner",
-                "type": "address"
-            },
-            {
-                "indexed": true,
-                "internalType": "address",
-                "name": "newOwner",
-                "type": "address"
-            }
-        ],
-        "name": "OwnershipTransferred",
-        "type": "event"
-    },
-    {
-        "anonymous": false,
-        "inputs": [
-            {
-                "indexed": true,
-                "internalType": "address",
-                "name": "from",
-                "type": "address"
-            },
-            {
-                "indexed": true,
-                "internalType": "address",
-                "name": "to",
-                "type": "address"
-            },
-            {
-                "indexed": true,
-                "internalType": "uint256",
-                "name": "tokenId",
-                "type": "uint256"
-            }
-        ],
-        "name": "Transfer",
-        "type": "event"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "to",
-                "type": "address"
-            },
-            {
-                "internalType": "uint256",
-                "name": "tokenId",
-                "type": "uint256"
-            }
-        ],
-        "name": "approve",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "owner",
-                "type": "address"
-            }
-        ],
-        "name": "balanceOf",
-        "outputs": [
-            {
-                "internalType": "uint256",
-                "name": "",
-                "type": "uint256"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "tokenId",
-                "type": "uint256"
-            }
-        ],
-        "name": "getApproved",
-        "outputs": [
-            {
-                "internalType": "address",
-                "name": "",
-                "type": "address"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "owner",
-                "type": "address"
-            },
-            {
-                "internalType": "address",
-                "name": "operator",
-                "type": "address"
-            }
-        ],
-        "name": "isApprovedForAll",
-        "outputs": [
-            {
-                "internalType": "bool",
-                "name": "",
-                "type": "bool"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "to",
-                "type": "address"
-            },
-            {
-                "internalType": "string",
-                "name": "tokenURI",
-                "type": "string"
-            }
-        ],
-        "name": "mint",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "name",
-        "outputs": [
-            {
-                "internalType": "string",
-                "name": "",
-                "type": "string"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "owner",
-        "outputs": [
-            {
-                "internalType": "address",
-                "name": "",
-                "type": "address"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "tokenId",
-                "type": "uint256"
-            }
-        ],
-        "name": "ownerOf",
-        "outputs": [
-            {
-                "internalType": "address",
-                "name": "",
-                "type": "address"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "renounceOwnership",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "from",
-                "type": "address"
-            },
-            {
-                "internalType": "address",
-                "name": "to",
-                "type": "address"
-            },
-            {
-                "internalType": "uint256",
-                "name": "tokenId",
-                "type": "uint256"
-            }
-        ],
-        "name": "safeTransferFrom",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "from",
-                "type": "address"
-            },
-            {
-                "internalType": "address",
-                "name": "to",
-                "type": "address"
-            },
-            {
-                "internalType": "uint256",
-                "name": "tokenId",
-                "type": "uint256"
-            },
-            {
-                "internalType": "bytes",
-                "name": "data",
-                "type": "bytes"
-            }
-        ],
-        "name": "safeTransferFrom",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "operator",
-                "type": "address"
-            },
-            {
-                "internalType": "bool",
-                "name": "approved",
-                "type": "bool"
-            }
-        ],
-        "name": "setApprovalForAll",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "bytes4",
-                "name": "interfaceId",
-                "type": "bytes4"
-            }
-        ],
-        "name": "supportsInterface",
-        "outputs": [
-            {
-                "internalType": "bool",
-                "name": "",
-                "type": "bool"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "name": "symbol",
-        "outputs": [
-            {
-                "internalType": "string",
-                "name": "",
-                "type": "string"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "uint256",
-                "name": "tokenId",
-                "type": "uint256"
-            }
-        ],
-        "name": "tokenURI",
-        "outputs": [
-            {
-                "internalType": "string",
-                "name": "",
-                "type": "string"
-            }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "from",
-                "type": "address"
-            },
-            {
-                "internalType": "address",
-                "name": "to",
-                "type": "address"
-            },
-            {
-                "internalType": "uint256",
-                "name": "tokenId",
-                "type": "uint256"
-            }
-        ],
-        "name": "transferFrom",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [
-            {
-                "internalType": "address",
-                "name": "newOwner",
-                "type": "address"
-            }
-        ],
-        "name": "transferOwnership",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    }
-];
-
+// Fonction asynchrone pour charger les NFTs
 async function loadNFTs() {
+    // Vérifie si l'objet ethereum est disponible dans la fenêtre
     if (window.ethereum) {
+        // Crée une nouvelle instance de Web3 avec le fournisseur ethereum
         const web3 = new Web3(window.ethereum);
+        // Demande à l'utilisateur d'autoriser l'accès à ses comptes Ethereum
         await window.ethereum.enable();
+        // Crée une nouvelle instance de contrat avec l'ABI et l'adresse du contrat
         const contract = new web3.eth.Contract(contractABI, contractAddress);
 
+        // Appelle la méthode _tokenIds du contrat pour obtenir le nombre total de tokens
         const totalSupply = await contract.methods._tokenIds().call();
+        // Obtient la référence à l'élément de la galerie dans le DOM
         const gallery = document.getElementById('nft-gallery');
 
+        // Boucle sur chaque token
         for (let i = 1; i <= totalSupply && i <= 18; i++) {
+            // Appelle la méthode tokenURI du contrat pour obtenir l'URI du token
             const tokenURI = await contract.methods.tokenURI(i).call();
+            // Crée une nouvelle image et la configure
             const img = document.createElement('img');
             img.src = tokenURI;
             img.alt = `NFT ${i}`;
             img.className = 'nft-item';
+            // Ajoute un gestionnaire d'événements click pour ouvrir le token sur Etherscan
             img.onclick = () => {
                 window.open(`https://sepolia.etherscan.io/token/${contractAddress}?a=${i}`, '_blank');
             };
+            // Ajoute l'image à la galerie
             gallery.appendChild(img);
         }
     } else {
+        // Si l'objet ethereum n'est pas disponible, demande à l'utilisateur d'installer MetaMask
         alert('Please install MetaMask!');
     }
 }
 
+// Ajoute un gestionnaire d'événements pour exécuter la fonction loadNFTs lorsque le DOM est chargé
 document.addEventListener('DOMContentLoaded', function() {
     loadNFTs();
 
-    // Wrap every letter in a span for scrolling texts
+    // Enveloppe chaque lettre dans une balise span pour les textes défilants
     document.querySelectorAll('.scrolling-text').forEach(textWrapper => {
         textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
     });
 
+    // Fonction pour animer le texte
     const animateText = (element) => {
         anime.timeline()
             .add({
@@ -608,38 +57,43 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     };
 
-    // Intersection Observer to trigger animations when elements come into view
+    // Options pour l'observateur d'intersection
     const observerOptions = {
         root: null,
         rootMargin: "0px",
         threshold: 0.1
     };
 
+    // Fonction de rappel pour l'observateur d'intersection
     const observerCallback = (entries, observer) => {
         entries.forEach(entry => {
+            // Si l'élément est visible dans le viewport, déclenche l'animation du texte
             if (entry.isIntersecting) {
                 const target = entry.target;
                 animateText(`#${target.id} .scrolling-text`);
+                // Arrête d'observer l'élément
                 observer.unobserve(target);
             }
         });
     };
 
+    // Crée un nouvel observateur d'intersection
     const observer = new IntersectionObserver(observerCallback, observerOptions);
 
+    // Observe chaque section
     document.querySelectorAll('section').forEach(section => {
         observer.observe(section);
     });
 
-    // Observe the footer explicitly
+    // Observe explicitement le pied de page
     const footer = document.querySelector('footer');
     observer.observe(footer);
 
-    // Animation for the text "Token Gallery"
+    // Animation pour le texte "Token Gallery"
     anime.timeline()
         .add({
             targets: '.ml5 .line',
-            opacity: [0.5, 1],
+            opacity: [0.5, 2],
             scaleX: [0, 1],
             easing: "easeInOutExpo",
             duration: 700
@@ -664,18 +118,18 @@ document.addEventListener('DOMContentLoaded', function() {
             offset: '-=600'
         });
 
-    // Original scrolling effect script
+    // Script d'effet de défilement original
     let lastScrollY = window.scrollY;
     window.addEventListener('scroll', function() {
         lastScrollY = window.scrollY;
     });
 
-    // Lightbox script
+    // Script de la lightbox
     let currentIndex = 0;
     const images = document.querySelectorAll('.gallery .image');
     const totalImages = images.length;
 
-    // Open the lightbox
+    // Ouvre la lightbox
     window.openLightbox = function(event) {
         if (event.target.tagName === 'IMG') {
             const clickedIndex = Array.from(images).indexOf(event.target);
@@ -685,12 +139,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Close the lightbox
+    // Ferme la lightbox
     window.closeLightbox = function() {
         document.getElementById('lightbox').style.display = 'none';
     }
 
-    // Change the lightbox image based on direction (1 for next, -1 for prev)
+    // Change l'image de la lightbox en fonction de la direction (1 pour suivant, -1 pour précédent)
     window.changeImage = function(direction) {
         currentIndex += direction;
         if (currentIndex >= totalImages) {
@@ -701,18 +155,18 @@ document.addEventListener('DOMContentLoaded', function() {
         updateLightboxImage();
     }
 
-    // Update the lightbox image and thumbnails
+    // Met à jour l'image de la lightbox et les vignettes
     function updateLightboxImage() {
         const lightboxImg = document.getElementById('lightbox-img');
         const thumbnailContainer = document.getElementById('thumbnail-container');
 
-        // Update the main lightbox image
+        // Met à jour l'image principale de la lightbox
         lightboxImg.src = images[currentIndex].src;
 
-        // Clear existing thumbnails
+        // Efface les vignettes existantes
         thumbnailContainer.innerHTML = '';
 
-        // Add new thumbnails
+        // Ajoute de nouvelles vignettes
         images.forEach((image, index) => {
             const thumbnail = document.createElement('img');
             thumbnail.src = image.src;
@@ -722,21 +176,21 @@ document.addEventListener('DOMContentLoaded', function() {
             thumbnailContainer.appendChild(thumbnail);
         });
 
-        // Highlight the current thumbnail
+        // Met en évidence la vignette actuelle
         const thumbnails = document.querySelectorAll('.thumbnail');
         thumbnails[currentIndex].classList.add('active-thumbnail');
     }
 
-    // Update the main lightbox image when a thumbnail is clicked
+    // Met à jour l'image principale de la lightbox lorsqu'une vignette est cliquée
     function updateMainImage(index) {
         currentIndex = index;
         updateLightboxImage();
     }
 
-    // Add initial thumbnails
+    // Ajoute les vignettes initiales
     updateLightboxImage();
 
-    // To add keyboard navigation (left/right arrow keys)
+    // Pour ajouter la navigation au clavier (touches fléchées gauche/droite)
     document.addEventListener('keydown', function (e) {
         if (document.getElementById('lightbox').style.display === 'flex') {
             if (e.key === 'ArrowLeft') {

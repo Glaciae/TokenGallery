@@ -1,324 +1,367 @@
+/* Importation des polices depuis Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond&family=DM+Mono:wght@400;500&display=swap');
 
+/* Styles généraux pour le body */
 body {
-    font-family: 'Cormorant Garamond', sans-serif;
-    margin: 0;
-    padding: 0;  
-    background: #2b1e36;
-    font-size: 1em;
+    font-family: 'Cormorant Garamond', sans-serif; /* Police principale pour tout le corps de la page */
+    margin: 0; /* Supprime la marge par défaut */
+    padding: 0; /* Supprime le padding par défaut */
+    background: #2b1e36; /* Définit la couleur de fond de la page */
+    font-size: 1em; /* Taille de police par défaut */
 }
 
+/* Styles pour les titres principaux */
 h1 {
-    text-align: center;
-    padding: 40px;
-    margin: 0;
-    color: beige;
-    font-size: 4em;
+    text-align: center; /* Centre le texte horizontalement */
+    padding: 40px; /* Ajoute un padding de 40 pixels autour du texte */
+    margin: 0; /* Supprime la marge par défaut */
+    color: beige; /* Couleur du texte */
+    font-size: 4em; /* Définit la taille de la police */
 }
 
+/* Styles pour les paragraphes de texte plus grand */
 .larger-text {
-    font-size: 1.8em; /* Agrandit la taille de la police */
+    font-size: 1.6em; /* Taille de police plus grande pour attirer l'attention */
+    text-align: left; /* Aligne le texte à gauche */
+    margin-left: 5%; /* Marge gauche de 5% pour l'espacement */
+    margin-right: 5%; /* Marge droite de 5% pour l'espacement */
 }
 
+/* Styles pour la galerie d'images */
 .gallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 20px;
+    display: flex; /* Utilise flexbox pour la mise en page des images */
+    flex-wrap: wrap; /* Permet aux images de passer à la ligne suivante si nécessaire */
+    justify-content: center; /* Centre les éléments horizontalement */
+    padding: 20px; /* Ajoute un padding de 20 pixels autour de la galerie */
 }
 
+/* Conteneur de chaque image dans la galerie */
 .gallery .container {
-    position: relative;
-    width: calc(25% - 40px);
-    margin: 20px;
-    box-sizing: border-box;
-    border: 2px solid #2b1e36;
-    border-radius: 5.5%;
+    position: relative; /* Positionnement relatif pour les éléments enfants absolus */
+    width: calc(25% - 40px); /* Largeur de 25% de l'espace disponible moins 40 pixels */
+    margin: 20px; /* Marge de 20 pixels autour de chaque conteneur */
+    box-sizing: border-box; /* Inclut le padding et les bordures dans la largeur totale */
+    border: 2px solid #2b1e36; /* Bordure de 2 pixels solide avec couleur de fond */
+    border-radius: 5.5%; /* Coins arrondis */
 }
 
+/* Styles pour le conteneur de l'image */
 .gallery .image-wrapper {
-    width: 100%;
-    padding-bottom: 100%;
-    position: relative;
-    overflow: hidden;
-    border-radius: 5%;
+    width: 100%; /* Largeur de 100% du conteneur parent */
+    padding-bottom: 100%; /* Hauteur égale à la largeur pour un carré */
+    position: relative; /* Positionnement relatif pour l'image */
+    overflow: hidden; /* Cache tout dépassement d'image */
+    border-radius: 5%; /* Coins arrondis */
 }
 
+/* Styles pour chaque image */
 .gallery .image {
-    position: absolute;
+    position: absolute; /* Positionnement absolu pour remplir le conteneur */
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 5%;
+    width: 100%; /* Largeur de 100% du conteneur parent */
+    height: 100%; /* Hauteur de 100% du conteneur parent */
+    object-fit: cover; /* Remplit le conteneur en gardant le ratio d'aspect */
+    border-radius: 5%; /* Coins arrondis */
 }
 
+/* Overlay apparaissant au survol de l'image */
 .gallery .overlay {
-    position: absolute;
+    position: absolute; /* Positionnement absolu couvrant toute l'image */
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     height: 100%;
     width: 100%;
-    opacity: 0;
-    transition: .5s ease;
-    background-color: #2b1e36;
-    border-radius: 5%;
+    opacity: 0; /* Transparence initiale */
+    transition: .5s ease; /* Transition en douceur sur 0.5 seconde */
+    background-color: #2b1e36; /* Couleur de fond de l'overlay */
+    border-radius: 5%; /* Coins arrondis */
 }
 
+/* Affichage de l'overlay au survol */
 .gallery .container:hover .overlay {
-    opacity: 1;
+    opacity: 1; /* Rend l'overlay visible */
 }
 
+/* Styles pour le texte affiché dans l'overlay */
 .gallery .text {
-    color: white;
-    font-size: 20px;
-    position: absolute;
+    color: white; /* Couleur du texte */
+    font-size: 20px; /* Taille de la police */
+    position: absolute; /* Positionnement absolu pour centrer le texte */
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+    transform: translate(-50%, -50%); /* Centre le texte horizontalement et verticalement */
+    text-align: center; /* Centre le texte à l'intérieur du conteneur */
 }
 
+/* Lightbox pour afficher les images en grand */
 #lightbox {
-    display: none;
-    position: fixed;
+    display: none; /* Masqué par défaut */
+    position: fixed; /* Positionnement fixe pour couvrir toute la page */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    flex-direction: column;
+    justify-content: center; /* Centre les éléments horizontalement */
+    align-items: center; /* Centre les éléments verticalement */
+    overflow: hidden; /* Cache tout dépassement */
+    flex-direction: column; /* Aligne les éléments en colonne */
 }
 
+/* Styles pour l'image dans la lightbox */
 #lightbox img {
-    max-width: 80%;
-    max-height: 60vh;
-    box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
-    border-radius: 10px;
+    max-width: 80%; /* Largeur maximale de 80% de la fenêtre */
+    max-height: 60vh; /* Hauteur maximale de 60% de la hauteur de la fenêtre */
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.8); /* Ombre autour de l'image */
+    border-radius: 10px; /* Coins arrondis */
 }
 
+/* Bouton de fermeture de la lightbox */
 #close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-    color: #fff;
-    cursor: pointer;
-    z-index: 2;
+    position: absolute; /* Positionnement absolu */
+    top: 10px; /* 10 pixels du haut */
+    right: 10px; /* 10 pixels de la droite */
+    font-size: 24px; /* Taille de la police */
+    color: #fff; /* Couleur blanche */
+    cursor: pointer; /* Curseur de pointeur au survol */
+    z-index: 2; /* Au-dessus des autres éléments */
 }
 
+/* Boutons de navigation dans la lightbox */
 #prev-btn,
 #next-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 20px;
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0.5);
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+    position: absolute; /* Positionnement absolu */
+    top: 50%; /* 50% de la hauteur de la fenêtre */
+    transform: translateY(-50%); /* Centre verticalement */
+    font-size: 20px; /* Taille de la police */
+    color: #fff; /* Couleur blanche */
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+    border: none; /* Pas de bordure */
+    padding: 10px; /* Padding de 10 pixels */
+    cursor: pointer; /* Curseur de pointeur au survol */
+    transition: background-color 0.3s; /* Transition en douceur pour la couleur de fond */
 }
 
+/* Bouton précédent */
 #prev-btn {
-    left: 10px;
+    left: 10px; /* 10 pixels de la gauche */
 }
 
+/* Bouton suivant */
 #next-btn {
-    right: 10px;
+    right: 10px; /* 10 pixels de la droite */
 }
 
+/* Changement de couleur au survol des boutons */
 #prev-btn:hover,
 #next-btn:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.8); /* Fond plus sombre au survol */
 }
 
+/* Conteneur pour les miniatures dans la lightbox */
 .thumbnail-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+    display: flex; /* Utilise flexbox pour l'agencement des miniatures */
+    flex-direction: row; /* Aligne les miniatures en ligne */
+    flex-wrap: wrap; /* Permet aux miniatures de passer à la ligne suivante si nécessaire */
+    justify-content: center; /* Centre les miniatures horizontalement */
 }
 
+/* Styles pour chaque miniature */
 .thumbnail {
-    max-width: 50px;
-    width: 100px;
-    cursor: pointer;
-    margin-top: 40px;
-    margin-left: 5px;
-    margin-right: 5px;
-    border: 2px solid #fff;
-    transition: opacity 0.3s;
+    max-width: 50px; /* Largeur maximale de 50 pixels */
+    width: 100px; /* Largeur de 100 pixels */
+    cursor: pointer; /* Curseur de pointeur au survol */
+    margin-top: 40px; /* Marge supérieure de 40 pixels */
+    margin-left: 5px; /* Marge gauche de 5 pixels */
+    margin-right: 5px; /* Marge droite de 5 pixels */
+    border: 2px solid #fff; /* Bordure blanche de 2 pixels */
+    transition: opacity 0.3s; /* Transition en douceur pour l'opacité */
 }
 
+/* Opacité réduite au survol et pour la miniature active */
 .thumbnail:hover,
 .thumbnail.active-thumbnail {
-    opacity: 0.7;
+    opacity: 0.7; /* Opacité réduite */
 }
 
+/* Styles généraux pour le body avec une police différente */
 body {
-    font-family: 'Nunito', sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-    color: #2b1e36;
-    background-color: #c2b9e9;
+    font-family: 'Nunito', sans-serif; /* Change la police principale */
+    margin: 0; /* Supprime la marge par défaut */
+    padding: 0; /* Supprime le padding par défaut */
+    line-height: 1.6; /* Hauteur de ligne */
+    color: #2b1e36; /* Couleur du texte */
+    background-color: #c2b9e9; /* Couleur de fond */
 }
 
+/* Styles pour le header */
 header {
-    background: #c2b9e9;
-    padding: 20px;
-    text-align: center;
-    position: relative;
+    background: #c2b9e9; /* Couleur de fond */
+    padding: 20px; /* Padding de 20 pixels */
+    text-align: center; /* Centre le texte horizontalement */
+    position: relative; /* Positionnement relatif */
 }
 
+/* Styles pour les titres dans le header */
 header h1 {
-    font-size: 5em;
-    margin: 0;
+    font-size: 5em; /* Taille de la police */
+    margin: 0; /* Supprime la marge par défaut */
 }
 
+/* Classe pour l'animation du texte */
 .ml5 {
-    position: relative;
-    font-weight: 300;
-    font-size: 800%;
-    color: #2b1e36;
+    position: relative; /* Positionnement relatif */
+    font-weight: 300; /* Poids de la police */
+    font-size: 800%; /* Taille de la police */
+    color: #2b1e36; /* Couleur du texte */
 }
 
 .ml5 .text-wrapper {
-    position: relative;
-    display: inline-block;
-    padding-top: 0.1em;
-    padding-right: 0.05em;
-    padding-bottom: 0.15em;
-    line-height: 1em;
+    position: relative; /* Positionnement relatif */
+    display: inline-block; /* Affichage en ligne */
+    padding-top: 0.1em; /* Padding supérieur */
+    padding-right: 0.05em; /* Padding droit */
+    padding-bottom: 0.15em; /* Padding inférieur */
+    line-height: 1em; /* Hauteur de ligne */
 }
 
 .ml5 .line {
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    height: 3px;
-    width: 100%;
-    background-color: #2b1e36;
-    transform-origin: 0.5 0;
+    position: absolute; /* Positionnement absolu */
+    left: 0; /* À gauche */
+    top: 0; /* En haut */
+    bottom: 0; /* En bas */
+    margin: auto; /* Centrage vertical */
+    height: 3px; /* Hauteur de 3 pixels */
+    width: 100%; /* Largeur de 100% */
+    background-color: #2b1e36; /* Couleur de fond */
+    transform-origin: 0.5 0; /* Origine de transformation */
 }
 
 .ml5 .ampersand {
-    font-family: Baskerville, serif;
-    font-style: italic;
-    font-weight: 400;
-    width: 1em;
+    font-family: Baskerville, serif; /* Police spécifique */
+    font-style: italic; /* Style italique */
+    font-weight: 400; /* Poids de la police */
+    width: 1em; /* Largeur */
 }
 
 .ml5 .letters {
-    display: inline-block;
-    opacity: 0;
+    display: inline-block; /* Affichage en ligne */
+    opacity: 0; /* Opacité nulle */
 }
 
+/* Conteneur pour la vidéo d'introduction */
 .intro-media {
-    margin-top: 2%;
-    border-radius: 5%;
+    margin-top: 2%; /* Marge supérieure de 2% */
+    border-radius: 5%; /* Coins arrondis */
 }
 
+/* Styles pour la vidéo d'introduction */
 .intro-media video {
-    width: 90%;
-    max-height: 40%;
-    object-fit: cover;
-    border-radius: 2%;
+    width: 90%; /* Largeur de 90% */
+    max-height: 40%; /* Hauteur maximale de 40% */
+    object-fit: cover; /* Remplit le conteneur en gardant le ratio d'aspect */
+    border-radius: 2%; /* Coins arrondis */
 }
 
+/* Conteneur pour les textes défilants */
 .scrolling-container {
-    overflow: hidden;
-    white-space: nowrap;
-    position: relative;
+    overflow: hidden; /* Cache tout dépassement */
+    white-space: nowrap; /* Empêche le retour à la ligne */
+    position: relative; /* Positionnement relatif */
 }
 
+/* Styles pour les textes défilants */
 .scrolling-text {
-    position: relative;
-    font-weight: 400;
-    font-size: 400%;
+    position: relative; /* Positionnement relatif */
+    font-weight: 400; /* Poids de la police */
+    font-size: 400%; /* Taille de la police */
 }
 
 .scrolling-text .text-wrapper {
-    position: relative;
-    display: inline-block;
-    padding-top: 0.2em;
-    padding-right: 0.05em;
-    padding-bottom: 0.1em;
-    overflow: hidden;
+    position: relative; /* Positionnement relatif */
+    display: inline-block; /* Affichage en ligne */
+    padding-top: 0.2em; /* Padding supérieur */
+    padding-right: 0.05em; /* Padding droit */
+    padding-bottom: 0.1em; /* Padding inférieur */
+    overflow: hidden; /* Cache tout dépassement */
 }
 
 .scrolling-text .letter {
-    transform-origin: 50% 100%;
-    display: inline-block;
-    line-height: 1em;
+    transform-origin: 50% 100%; /* Origine de transformation */
+    display: inline-block; /* Affichage en ligne */
+    line-height: 1em; /* Hauteur de ligne */
 }
 
+/* Animation de défilement */
 @keyframes scroll {
     0% {
-        transform: translateX(100%);
+        transform: translateX(100%); /* Départ à droite hors écran */
     }
     100% {
-        transform: translateX(-100%);
+        transform: translateX(-100%); /* Fin à gauche hors écran */
     }
 }
 
+/* Styles pour les sections */
 section {
-    padding: 20px;
-    text-align: center;
+    padding: 20px; /* Padding de 20 pixels */
+    text-align: center; /* Centre le texte horizontalement */
 }
 
+/* Styles pour les sous-titres */
 h2 {
-    font-size: 2em;
-    color: #2b1e36;
+    font-size: 2em; /* Taille de la police */
+    color: #2b1e36; /* Couleur du texte */
 }
 
+/* Styles pour les listes */
 ul {
-    list-style: none;
-    padding: 0;
+    list-style: none; /* Supprime les puces */
+    padding: 0; /* Supprime le padding par défaut */
 }
 
 li {
-    margin: 5px 0;
+    margin: 5px 0; /* Marge verticale de 5 pixels */
 }
 
+/* Styles pour le footer */
 footer {
-    background: #c2b9e9;
-    padding: 20px;
-    text-align: center;
+    background: #c2b9e9; /* Couleur de fond */
+    padding: 20px; /* Padding de 20 pixels */
+    text-align: center; /* Centre le texte horizontalement */
 }
 
+/* Styles pour les liens dans le footer */
 footer a {
-    color: #2b1e36;
-    text-decoration: none;
+    color: #2b1e36; /* Couleur du texte */
+    text-decoration: none; /* Supprime le soulignement par défaut */
 }
 
+/* Soulignement au survol des liens */
 footer a:hover {
-    text-decoration: underline;
+    text-decoration: underline; /* Ajoute un soulignement au survol */
 }
 
+/* Adaptation du layout de la galerie pour différents écrans */
+/* Pour les écrans de moins de 1200 pixels de large */
 @media (max-width: 1200px) {
     .gallery .container {
-        width: calc(33.33% - 40px);
+        width: calc(33.33% - 40px); /* Largeur de 33.33% moins 40 pixels */
     }
 }
 
+/* Pour les écrans de moins de 800 pixels de large */
 @media (max-width: 800px) {
     .gallery .container {
-        width: calc(50% - 40px);
+        width: calc(50% - 40px); /* Largeur de 50% moins 40 pixels */
     }
 }
 
+/* Pour les écrans de moins de 500 pixels de large */
 @media (max-width: 500px) {
     .gallery .container {
-        width: calc(100% - 40px);
+        width: calc(100% - 40px); /* Largeur de 100% moins 40 pixels */
     }
 }

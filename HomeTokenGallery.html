@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Déclaration de l'encodage des caractères et des paramètres de mise à l'échelle -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Titre de la page -->
     <title>Home - Token Gallery</title>
+    <!-- Préconnexion pour optimiser le chargement des polices -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Lien vers les polices Google utilisées -->
     <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Nunito:ital,wght@0,200;0,1000;1,200;1,1000&display=swap" rel="stylesheet">
+    <!-- Lien vers le fichier CSS personnalisé -->
     <link rel="stylesheet" href="HomeTokenGallery.css">
+    <!-- Lien vers la bibliothèque anime.js pour les animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
 </head>
 <body>
     <header>
+        <!-- Titre animé de la galerie -->
         <h1 class="ml5">
           <span class="text-wrapper">
             <span class="line line1"></span>
@@ -20,6 +27,7 @@
             <span class="line line2"></span>
           </span>
         </h1>
+        <!-- Conteneur pour la vidéo d'introduction -->
         <div class="intro-media">
             <video autoplay playsinline muted loop>
                 <source src="./Assets/intro.mp4" type="video/mp4">
@@ -28,17 +36,33 @@
     </header>
 
     <section id="about">
+        <!-- Texte de bienvenue et description de la galerie -->
         <div class="scrolling-container">
             <h2 class="scrolling-text"> About </h2>
         </div>
-        <p class="larger-text">Hi there! I’m Claudia Mussett, an art director, multidisciplinary designer, and illustrator. I work independently worldwide from Spain.</p>
+        <p class="larger-text">
+            Bienvenue à TokenGallery !<br>
+            Votre destination ultime pour explorer et collectionner des NFTs uniques. ✨<br><br>
+            
+            Chez TokenGallery, nous croyons fermement en la capacité de la blockchain à transformer l'art et la propriété numérique. 👾<br>
+            Notre galerie présente une collection éclectique de NFTs, méticuleusement conçus par le collectif créatif Alines. 🫂<br>
+            
+            Plongez dans cette aventure passionnante et découvrez une multitude d'œuvres d'art numérique qui repoussent les limites de la créativité. 👩‍🎨<br><br>
+            Chaque NFT de notre collection est une pièce unique, offrant une expérience visuelle et émotionnelle sans pareille. 🖼️<br>
+
+            Rejoignez notre communauté grandissante d'amateurs d'art et de collectionneurs passionnés. ❤️‍🔥<br><br>
+            Explorez notre galerie, trouvez des trésors numériques rares et faites partie de la révolution artistique de demain. 💎<br><br>
+            TokenGallery n'est pas seulement une galerie, c'est un voyage dans l'univers fascinant de l'art numérique, où chaque œuvre raconte une histoire et chaque collectionneur devient un pionnier. 🛸
+        </p>
+        
     </section>
 
     <section id="playground">
         <div class="scrolling-container">
             <h2 class="scrolling-text"> Playground </h2>
         </div>
-        <p class="larger-text">This is a selection of some experiments and stuff I do for my friends or just for fun...</p>
+        <p class="larger-text">Voici une sélection d'expériences et de créations uniques réalisé par notre collectif </p>
+        <!-- Galerie d'images NFT -->
         <div class="gallery">
             <div class="container" onclick="openLightbox(event)">
                 <div class="image-wrapper">
@@ -171,7 +195,7 @@
         </div>
     </section>
 
-    <!-- Lightbox container -->
+    <!-- Conteneur de la lightbox pour afficher les images en grand format -->
     <div id="lightbox">
         <span id="close-btn" onclick="closeLightbox()">&times;</span>
         <img id="lightbox-img" src="" alt="lightbox image">
@@ -184,10 +208,12 @@
         <div class="scrolling-container">
             <!-- <h2 class="scrolling-text"> Contact </h2> -->
         </div>
+        <!-- Informations de contact -->
         <p>Email me at <a href="mailto:alines@tokengallery.com">alines@tokengallery.com</a></p>
         <p>Find me on <a href="https://github.com/Glaciae/TokenGallery" target="_blank">GitHub</a></p>
     </footer>
 
+    <!-- Inclusion des scripts JavaScript -->
     <script src="HomeTokenGallery.js"></script>
     <script src="gallery.js"></script>
 </body>
